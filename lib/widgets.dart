@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-const String GITHUB_URL = '';
+const String GITHUB_URL = 'https://github.com/Tahaan/careful_even_checker/blob/master/lib/core/checker.dart';
+
+// TODO: Add an about page.
 
 class MainMenu extends StatelessWidget {
   @override
@@ -27,6 +29,15 @@ class MainMenu extends StatelessWidget {
   }
 
   Future<void> goToGithub() async {
-    launch(GITHUB_URL);
+    print('Open $GITHUB_URL');
+    if (await canLaunch(GITHUB_URL)) {
+      await launch(
+        GITHUB_URL,
+        forceSafariVC: false,
+        forceWebView: false,
+      );
+    } else {
+      throw 'Could not launch $GITHUB_URL';
+    }
   }
 }
