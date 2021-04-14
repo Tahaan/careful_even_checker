@@ -76,8 +76,14 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
         child: Stack(
           children: [
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
               children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ReadMoreButton(),
+              ),
+
                 Padding(
                   padding: const EdgeInsets.all(26.0),
                   child: TextField(
@@ -98,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                         return Container();
                       }
                       String resultDescription = '';
-                      if (numberInputController.text == null ||
+                      if (
                           numberInputController.text.length == 0) {
                         resultDescription = 'Type a number';
                       } else {
@@ -188,4 +194,5 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
           SnackBar(content: Text('You could try an actual number.')));
     }
   }
+
 }
