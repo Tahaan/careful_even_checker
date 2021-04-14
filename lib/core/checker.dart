@@ -29,7 +29,7 @@ bool isEvenWorker(int value) {
   }
   int evenNumberCounter = 0;
   int evenNumber = 0;
-  while (evenNumber < value) {
+  while (evenNumber <= value) {
     // Compare the number with every even number.  Stop if the next even
     // number is higher than the number we are testing
     evenNumber = _getNthEvenNumber(evenNumberCounter);
