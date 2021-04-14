@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:evenator/core/checker.dart';
+import 'package:evenator/widgets.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -61,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
       appBar: AppBar(
         title: Text('Evenator'),
       ),
+      drawer: MainMenu(),
       body: Center(
         child: Stack(
           children: [
