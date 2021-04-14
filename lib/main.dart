@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:evenator/core/checker.dart';
+import 'package:evenator/readmore_button.dart';
 import 'package:evenator/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -48,6 +49,14 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       dismissKeyboardNow();
     });
+    super.initState();
+  }
+
+
+  @override
+  void dispose() {
+    results.close();
+    super.dispose();
   }
 
   void dismissKeyboardNow() {
