@@ -4,11 +4,8 @@ import 'package:flutter/foundation.dart';
 
 class EvenChecker {
   static Future<bool> isEven(int value) async {
-    if (value < 0) {
-      return await compute(isEvenWorker, ~value);
-    } else {
-      return await compute(isEvenWorker, value);
-    }
+    // Use a background thread to keep the app responsive
+    return await compute(isEvenWorker, value);
   }
 }
 
@@ -27,16 +24,19 @@ int _getNthEvenNumber(int n) {
 }
 
 bool isEvenWorker(int value) {
-  int evenNumberToCheck = 0;
+  if (value < 0) {
+    return isEvenWorker(-value);
+  }
+  int evenNumberCounter = 0;
   int evenNumber = 0;
   while (evenNumber < value) {
     // Compare the number with every even number.  Stop if the next even
     // number is higher than the number we are testing
-    evenNumberToCheck = evenNumberToCheck + 1;
-    evenNumber = _getNthEvenNumber(evenNumberToCheck);
+    evenNumber = _getNthEvenNumber(evenNumberCounter);
     if (evenNumber == value) {
       return true;
     }
+    evenNumberCounter = evenNumberCounter + 1;
   }
   return false;
 }
